@@ -1,0 +1,8 @@
+POST http://localhost:8080/api/countries
+Content-Type: application/json
+
+{
+    "name": "England3",
+    "alpha2Code": "E4",
+    "alpha3Code":"EN4"
+}

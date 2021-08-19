@@ -1,0 +1,1 @@
+GET http://localhost:8080/api/countries/code?cc=AF&lang=en&fields=name,population,area
