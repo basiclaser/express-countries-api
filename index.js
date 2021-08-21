@@ -50,24 +50,6 @@ app
         res.json(countries)
     })
     
-    // https://google.com/search?q=javascript
-    // http://localhost:3000/?code=EN2
-    // QUERY PARAMS
-    app
-        .route("/api/countries/code")
-        .get((req,res) => {
-            console.log(req.query)
-            const {cc} = req.query;
-            const condition1 = countries.find(c => c.alpha2Code === cc)
-            const condition2 = countries.find(c => c.alpha3Code === cc)
-            if(condition1 || condition2){
-                res.json(condition1 || condition2)
-            } else {
-                res.status(404).json({message: "Country not found"})
-            }
-        })
-
-    // PARAMS (dynamic route like react kinda)
     app
         .route("/api/countries/:cc")
         .get((req,res) => {
@@ -79,6 +61,23 @@ app
                 res.json(condition1 || condition2)
             } else {
                 res.status(404).json({message: "Country not found"})
+            }
+        })
+        .put((req,res) => {
+            console.log(req.params)
+            const {cc} = req.params;
+            const condition1 = countries.findIndex(c => c.alpha2Code === cc)
+            const condition2 = countries.findIndex(c => c.alpha3Code === cc)
+            if(condition1 > -1 || condition2 > -1){
+                if([name, alpha2Code, alpha3Code].every(isString)){
+                    const index = condition1 || condition2
+                    countries[index] = {...countries[index], ...req.body}
+                    res.json(countries[index])
+                } else {
+                    res.status(400).json({message: "Field types were invalid"})
+                }
+            } else {
+                res.status(404).json({message: "Document does not exist"})
             }
         })
     

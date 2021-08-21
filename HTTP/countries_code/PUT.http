@@ -1,0 +1,6 @@
+PUT http://localhost:8080/api/countries/AL
+Content-Type: application/json
+
+{
+    "name": "Albania"
+}
