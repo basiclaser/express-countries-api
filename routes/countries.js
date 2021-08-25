@@ -1,13 +1,12 @@
 import Router from 'express';
-const countriesRouter = Router();
-import {isString} from "../utilities.js"
 import {
     getAll,
     createOne,
     getOneByCC,
     updateOneByCC,
     deleteOneByCC } from "../controllers/countries.js"
-
+    
+const countriesRouter = Router();
 countriesRouter
     .route("/")
     .get(getAll)
