@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-
+// OBJECT RELATIONAL MAPPING
 const CountrySchema = new mongoose.Schema(
     {
         name:  {required: true, type: String},

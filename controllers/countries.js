@@ -18,13 +18,10 @@ export async function createOne(request, response) {
     }
 }
 
-export function getOneByCC(request, response) {
-
+export function getOneByCC(request,response) {
 }
 export function updateOneByCC(request, response) {
-
 }
 export function deleteOneByCC(request, response) {
-
 }
 
